@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d3k6exye4lok0"]
+
+[ext_resource type="Material" uid="uid://bibjsy17dbmg3" path="res://Material/TreshMaterial.tres" id="1_c2mmk"]
+
+[node name="Trash" type="Node3D" unique_id=1127911284]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1945998657]
+transform = Transform3D(0.971, 0, 0, 0, 0.813, 0, 0, 0, 1, 0, 0, 0)
+use_collision = true
+radius = 0.5019531
+height = 1.552
+sides = 40
+material = ExtResource("1_c2mmk")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=34301473]
+transform = Transform3D(0.9715508, 0, 0, 0, 0.96300006, 0, 0, 0, 0.9724359, 0, 0.043814972, 0)
+operation = 2
+height = 1.572082
+sides = 40
+material = ExtResource("1_c2mmk")

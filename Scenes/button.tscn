@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cwyevgr86d8bj"]
+
+[ext_resource type="Script" uid="uid://crk1btleommrw" path="res://Scripts/button.gd" id="1_0kpiu"]
+[ext_resource type="Material" uid="uid://dcvx4tsrucn84" path="res://Material/ButtonMaterial.tres" id="2_smycg"]
+
+[sub_resource type="BoxShape3D" id="hit_shape"]
+size = Vector3(0.42, 0.18, 0.12)
+
+[sub_resource type="BoxMesh" id="face_mesh"]
+material = ExtResource("2_smycg")
+size = Vector3(0.4, 0.16, 0.06)
+
+[node name="Button" type="Area3D" unique_id=961841704]
+collision_layer = 1048576
+collision_mask = 0
+script = ExtResource("1_0kpiu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=9568718]
+shape = SubResource("hit_shape")
+
+[node name="Face" type="MeshInstance3D" parent="." unique_id=1964914293]
+mesh = SubResource("face_mesh")
+
+[node name="Caption" type="Label3D" parent="Face" unique_id=915174189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.04)
+pixel_size = 0.002
+modulate = Color(0.97, 0.9, 0.72, 1)
+text = "КНОПКА"
+outline_size = 1

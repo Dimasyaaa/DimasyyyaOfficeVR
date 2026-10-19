@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://daj1euupxhn3d"]
+
+[ext_resource type="ArrayMesh" uid="uid://6pwbi4mavayo" path="res://Models/papka/CHAHIN_NOTEBOOK.obj" id="1_d4tb1"]
+[ext_resource type="Script" uid="uid://bfrlpbsqg5lqr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_pick"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_papka"]
+size = Vector3(0.718, 0.132, 0.882)
+
+[node name="Papka" type="RigidBody3D" unique_id=984477698]
+collision_layer = 4
+collision_mask = 196615
+freeze_mode = 1
+script = ExtResource("2_pick")
+
+[node name="ChahinNotebook" type="MeshInstance3D" parent="." unique_id=139685282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06221652, 0, 0.20303059)
+mesh = ExtResource("1_d4tb1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=984477699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14921652, -0.009, 0.22603059)
+shape = SubResource("BoxShape3D_papka")

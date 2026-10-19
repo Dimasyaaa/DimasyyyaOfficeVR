@@ -1,0 +1,75 @@
+newmtl body.inner
+Kd 0.831373 0.831373 0.831373
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.605 0.605 0.605
+Ns 720
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl body.led
+Kd 1 0.933333 0.0823529
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0.3
+d 0.7
+Ni 1.1
+Tf 1 1 1
+
+newmtl body.outer
+Kd 0.984314 0.984314 0.976471
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.665 0.665 0.665
+Ns 470
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd key3.png
+map_bump key3.png
+bump key3.png
+
+newmtl key.bottom
+Kd 0 0 0
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl key.gray
+Kd 0.588235 0.588235 0.588235
+Ke 0.35 0.35 0.35
+Ka 0.3 0.3 0.3
+Ks 0.7 0.7 0.7
+Ns 800
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd key2.png
+map_bump key2.png
+bump key2.png
+
+newmtl key.white
+Kd 1 1 1
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.7 0.7 0.7
+Ns 800
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd key1.png
+map_bump key1.png
+bump key1.png
+

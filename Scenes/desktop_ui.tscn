@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://dr67jooxjl5l5"]
+
+[ext_resource type="Script" uid="uid://bp1sdwu1n8usv" path="res://Scripts/desktop_ui.gd" id="1_desktop"]
+[ext_resource type="Texture2D" uid="uid://d01jcl8nv38gi" path="res://Textures/email.png" id="2_hbwg7"]
+[ext_resource type="Texture2D" uid="uid://jnjcpm48tk4x" path="res://Textures/task.png" id="2_punyt"]
+
+[node name="Desktop" type="Control" unique_id=800003001]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_desktop")
+
+[node name="Wallpaper" type="ColorRect" parent="." unique_id=800003002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7388661, 0.20133868, 0.28544766, 1)
+
+[node name="Taskbar" type="Panel" parent="." unique_id=800003003]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+grow_vertical = 0
+
+[node name="OfficeLabel" type="Label" parent="Taskbar" unique_id=800003004]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 120.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 14
+text = "DimasyyyaOS"
+
+[node name="Clock" type="Label" parent="Taskbar" unique_id=800003005]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.0
+offset_top = 5.0
+offset_right = -10.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 14
+text = "00:00:00"
+horizontal_alignment = 2
+
+[node name="MailIcon" type="Button" parent="." unique_id=800003006]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 613.0
+offset_top = 1.0
+offset_right = 1157.0
+offset_bottom = 400.0
+theme_override_font_sizes/font_size = 16
+icon = ExtResource("2_hbwg7")
+
+[node name="TasksIcon" type="Button" parent="." unique_id=800003007]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 521.0
+offset_bottom = 518.0
+theme_override_font_sizes/font_size = 16
+icon = ExtResource("2_punyt")
+
+[node name="MailWindow" type="Panel" parent="." unique_id=800003008]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 116.0
+offset_top = 120.0
+offset_right = 943.0
+offset_bottom = 534.0
+
+[node name="MailTitle" type="Label" parent="MailWindow" unique_id=800003009]
+layout_mode = 1
+offset_left = 280.0
+offset_top = 5.0
+offset_right = 676.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 50
+text = "Входящие"
+
+[node name="MailBody" type="RichTextLabel" parent="MailWindow" unique_id=800003010]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 6.0
+offset_top = 65.0
+offset_right = 828.0
+offset_bottom = 326.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Писем пока нет."
+
+[node name="MailClose" type="Button" parent="MailWindow" unique_id=800003011]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 208.0
+offset_top = 335.0
+offset_right = 615.0
+offset_bottom = 412.0
+theme_override_colors/font_color = Color(0.8515541, 0.15330386, 0.092992805, 1)
+theme_override_font_sizes/font_size = 50
+text = "Закрыть"
+
+[node name="TaskWindow" type="Panel" parent="." unique_id=800003012]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 60.0
+offset_top = 120.0
+offset_right = 1010.0
+offset_bottom = 618.0
+
+[node name="TaskTitle" type="Label" parent="TaskWindow" unique_id=800003013]
+layout_mode = 1
+offset_left = 300.0
+offset_top = -3.0
+offset_right = 710.0
+offset_bottom = 66.0
+theme_override_font_sizes/font_size = 44
+text = "Задания"
+
+[node name="TaskText" type="Label" parent="TaskWindow" unique_id=800003014]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 12.0
+offset_top = 75.0
+offset_right = 938.0
+offset_bottom = 400.0
+theme_override_font_sizes/font_size = 34
+text = "Задание не выбрано"
+autowrap_mode = 3
+
+[node name="TaskClose" type="Button" parent="TaskWindow" unique_id=800003015]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 12.0
+offset_top = 410.0
+offset_right = 400.0
+offset_bottom = 487.0
+theme_override_font_sizes/font_size = 40
+text = "Закрыть"
+
+[node name="EndWindow" type="Panel" parent="." unique_id=800003016]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 70.0
+offset_top = 100.0
+offset_right = 1110.0
+offset_bottom = 562.0
+
+[node name="EndText" type="Label" parent="EndWindow" unique_id=800003017]
+layout_mode = 1
+offset_left = 191.0
+offset_top = 117.0
+offset_right = 907.0
+offset_bottom = 286.0
+theme_override_font_sizes/font_size = 60
+text = "Рабочий день окончен!
+Поздравляем!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cursor" type="ColorRect" parent="." unique_id=534316061]
+layout_mode = 0
+offset_right = 18.0
+offset_bottom = 18.0
+color = Color(1, 0.13333334, 0.13333334, 1)

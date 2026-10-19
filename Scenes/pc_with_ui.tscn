@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cqnxme6rhchy3"]
+
+[ext_resource type="Script" uid="uid://msgakv51ro0s" path="res://Scripts/pc_screen_stub.gd" id="1_stub"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_view"]
+[ext_resource type="PackedScene" uid="uid://dr67jooxjl5l5" path="res://Scenes/desktop_ui.tscn" id="3_ui"]
+
+[sub_resource type="StandardMaterial3D" id="mat_body"]
+albedo_color = Color(0.13, 0.14, 0.17, 1)
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="mesh_base"]
+material = SubResource("mat_body")
+size = Vector3(0.28, 0.02, 0.18)
+
+[sub_resource type="BoxMesh" id="mesh_neck"]
+material = SubResource("mat_body")
+size = Vector3(0.06, 0.1, 0.05)
+
+[sub_resource type="BoxMesh" id="mesh_frame"]
+material = SubResource("mat_body")
+size = Vector3(0.64, 0.38, 0.035)
+
+[node name="PCwithUI" type="Node3D" unique_id=376758580]
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=277439917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("mesh_base")
+
+[node name="Neck" type="MeshInstance3D" parent="." unique_id=2013539153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+mesh = SubResource("mesh_neck")
+
+[node name="Frame" type="MeshInstance3D" parent="." unique_id=392318433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, -0.005)
+mesh = SubResource("mesh_frame")
+
+[node name="Backing" type="MeshInstance3D" parent="." unique_id=1481489679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30788907, 0.016031448)
+mesh = SubResource("mesh_frame")
+script = ExtResource("1_stub")
+
+[node name="DesktopView" parent="." unique_id=2082921936 instance=ExtResource("2_view")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30788907, 0.036935374)
+screen_size = Vector2(0.6, 0.35)
+scene = ExtResource("3_ui")
+viewport_size = Vector2(1152, 648)
+transparent = 0

@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://cprinter0001"]
+
+[ext_resource type="Script" uid="uid://coys3quy54lsk" path="res://Scripts/printer.gd" id="1_printer"]
+[ext_resource type="PackedScene" uid="uid://cwyevgr86d8bj" path="res://Scenes/button.tscn" id="2_button"]
+[ext_resource type="PackedScene" uid="uid://dlx3k58hh3gtj" path="res://Scenes/paper_res.tscn" id="3_paperres"]
+
+[sub_resource type="StandardMaterial3D" id="mat_body"]
+albedo_color = Color(0.78, 0.79, 0.82, 1)
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="mesh_body"]
+material = SubResource("mat_body")
+size = Vector3(0.5, 0.3, 0.45)
+
+[sub_resource type="BoxShape3D" id="shape_body"]
+size = Vector3(0.5, 0.34, 0.45)
+
+[sub_resource type="BoxMesh" id="mesh_top"]
+material = SubResource("mat_body")
+size = Vector3(0.52, 0.04, 0.47)
+
+[sub_resource type="StandardMaterial3D" id="mat_dark"]
+albedo_color = Color(0.2, 0.21, 0.24, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="mesh_panel"]
+material = SubResource("mat_dark")
+size = Vector3(0.44, 0.1, 0.03)
+
+[sub_resource type="StandardMaterial3D" id="mat_lamp"]
+albedo_color = Color(0.9, 0.2, 0.2, 1)
+emission_enabled = true
+emission = Color(0.9, 0.2, 0.2, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="CylinderMesh" id="mesh_lamp"]
+material = SubResource("mat_lamp")
+top_radius = 0.018
+bottom_radius = 0.018
+height = 0.01
+radial_segments = 16
+
+[sub_resource type="BoxShape3D" id="shape_intake"]
+size = Vector3(0.36, 0.12, 0.32)
+
+[sub_resource type="StandardMaterial3D" id="mat_tray"]
+albedo_color = Color(0.12, 0.12, 0.14, 1)
+roughness = 0.7
+
+[sub_resource type="BoxMesh" id="mesh_tray"]
+material = SubResource("mat_tray")
+size = Vector3(0.36, 0.03, 0.3)
+
+[node name="Printer" type="Node3D" unique_id=2118177719]
+script = ExtResource("1_printer")
+paper_res_scene = ExtResource("3_paperres")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1391313617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17, 0)
+mesh = SubResource("mesh_body")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Body" unique_id=1975652508]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/StaticBody3D" unique_id=1815358384]
+shape = SubResource("shape_body")
+
+[node name="TopPlate" type="MeshInstance3D" parent="." unique_id=42773204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.34, 0)
+mesh = SubResource("mesh_top")
+
+[node name="ControlPanel" type="MeshInstance3D" parent="." unique_id=1322944006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26, 0.23)
+mesh = SubResource("mesh_panel")
+
+[node name="PrintButton" parent="." unique_id=812452593 instance=ExtResource("2_button")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28, 0.24)
+caption = "ПЕЧАТЬ"
+
+[node name="Lamp1" type="MeshInstance3D" parent="." unique_id=1256773961]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.16, 0.3, 0.235)
+mesh = SubResource("mesh_lamp")
+
+[node name="Lamp2" type="MeshInstance3D" parent="." unique_id=953946813]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.16, 0.3, 0.235)
+mesh = SubResource("mesh_lamp")
+
+[node name="Status" type="Label3D" parent="." unique_id=1793058429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14935549, 0.235)
+pixel_size = 0.0016
+modulate = Color(0.6, 1, 0.7, 1)
+text = "Нажмите ВКЛ"
+font_size = 40
+outline_size = 8
+
+[node name="IntakeZone" type="Area3D" parent="." unique_id=688105618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36, -0.02)
+collision_layer = 0
+collision_mask = 4
+
+[node name="IntakeShape" type="CollisionShape3D" parent="IntakeZone" unique_id=612727116]
+shape = SubResource("shape_intake")
+
+[node name="IntakeTray" type="MeshInstance3D" parent="." unique_id=1815529716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, -0.02)
+mesh = SubResource("mesh_tray")
+
+[node name="OutputSlot" type="Marker3D" parent="." unique_id=242328907]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0.19)
+
+[node name="OutputTray" type="MeshInstance3D" parent="." unique_id=266333359]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.365, 0.19)
+mesh = SubResource("mesh_tray")

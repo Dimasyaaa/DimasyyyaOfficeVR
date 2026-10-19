@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cdesklamp001"]
+
+[sub_resource type="StandardMaterial3D" id="mat_metal"]
+albedo_color = Color(0.25, 0.25, 0.28, 1)
+metallic = 0.6
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="mat_shade"]
+albedo_color = Color(0.75, 0.6, 0.42, 1)
+emission_enabled = true
+emission = Color(1, 0.8, 0.5, 1)
+emission_energy_multiplier = 0.7
+
+[sub_resource type="CylinderMesh" id="mesh_base"]
+material = SubResource("mat_metal")
+top_radius = 0.09
+bottom_radius = 0.1
+height = 0.02
+radial_segments = 24
+
+[sub_resource type="CylinderMesh" id="mesh_stem"]
+material = SubResource("mat_metal")
+top_radius = 0.01
+bottom_radius = 0.012
+height = 0.34
+radial_segments = 12
+
+[sub_resource type="CylinderMesh" id="mesh_shade"]
+material = SubResource("mat_shade")
+top_radius = 0.05
+bottom_radius = 0.11
+height = 0.11
+radial_segments = 24
+cap_top = true
+cap_bottom = false
+
+[sub_resource type="BoxShape3D" id="shape_base"]
+size = Vector3(0.2, 0.03, 0.2)
+
+[sub_resource type="BoxShape3D" id="shape_stem"]
+size = Vector3(0.04, 0.34, 0.04)
+
+[node name="DeskLamp" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("mesh_base")
+
+[node name="Stem" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19, 0)
+mesh = SubResource("mesh_stem")
+
+[node name="Shade" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0)
+mesh = SubResource("mesh_shade")
+
+[node name="CollisionBase" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+shape = SubResource("shape_base")
+
+[node name="CollisionStem" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19, 0)
+shape = SubResource("shape_stem")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.36, 0)
+light_color = Color(1, 0.82, 0.6, 1)
+light_energy = 2.5
+spot_range = 1.0
+spot_angle = 50.0
+shadow_enabled = false

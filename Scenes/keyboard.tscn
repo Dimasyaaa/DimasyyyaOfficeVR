@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dytx1y4jce37q"]
+
+[ext_resource type="ArrayMesh" uid="uid://cfjqecsc54vdi" path="res://Models/keyboard/tmp.obj" id="1_afman"]
+[ext_resource type="Script" uid="uid://bfrlpbsqg5lqr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_pick"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kbd"]
+size = Vector3(7.663, 0.399, 2.83)
+
+[node name="Keyboard" type="RigidBody3D" unique_id=754088147]
+collision_layer = 4
+collision_mask = 196615
+freeze_mode = 1
+script = ExtResource("2_pick")
+
+[node name="Tmp" type="MeshInstance3D" parent="." unique_id=87166229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18492448, -1.1920929e-07, 0.87644506)
+mesh = ExtResource("1_afman")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=900000001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19642448, 0.1995, 0.9724451)
+shape = SubResource("BoxShape3D_kbd")

@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsyvfewbqxgnw"]
+
+[ext_resource type="Script" path="res://Scripts/board.gd" id="1_board"]
+[ext_resource type="Material" uid="uid://c4re4m8feyqm7" path="res://Material/BoardMaterial.tres" id="2_uh3b8"]
+
+[sub_resource type="BoxMesh" id="board_mesh"]
+material = ExtResource("2_uh3b8")
+size = Vector3(2.2, 1.65, 0.16)
+
+[sub_resource type="BoxShape3D" id="board_shape"]
+size = Vector3(2.2, 1.65, 0.16)
+
+[sub_resource type="StandardMaterial3D" id="steel"]
+albedo_color = Color(0.15, 0.12, 0.09, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="post_mesh"]
+material = SubResource("steel")
+size = Vector3(0.08, 1.1, 0.12)
+
+[sub_resource type="BoxShape3D" id="post_shape"]
+size = Vector3(0.08, 1.1, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="frame_wood"]
+albedo_color = Color(0.32, 0.2, 0.1, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="frame_vertical"]
+material = SubResource("frame_wood")
+size = Vector3(0.07, 1.79, 0.08)
+
+[sub_resource type="BoxMesh" id="frame_horizontal"]
+material = SubResource("frame_wood")
+size = Vector3(2.34, 0.07, 0.08)
+
+[sub_resource type="BoxShape3D" id="shape_zone"]
+size = Vector3(2.3, 1.75, 0.3)
+
+[node name="HistoryStand" type="Node3D" unique_id=652553775]
+script = ExtResource("1_board")
+
+[node name="Board" type="StaticBody3D" parent="." unique_id=1266657663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+collision_mask = 7
+
+[node name="Mesh" type="MeshInstance3D" parent="Board" unique_id=1598973932]
+mesh = SubResource("board_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board" unique_id=950643743]
+shape = SubResource("board_shape")
+
+[node name="LeftPost" type="StaticBody3D" parent="." unique_id=291062841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.96, 0.55, 0)
+collision_mask = 7
+
+[node name="Mesh" type="MeshInstance3D" parent="LeftPost" unique_id=1055176718]
+mesh = SubResource("post_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftPost" unique_id=592641195]
+shape = SubResource("post_shape")
+
+[node name="RightPost" type="StaticBody3D" parent="." unique_id=2086871273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96, 0.55, 0)
+collision_mask = 7
+
+[node name="Mesh" type="MeshInstance3D" parent="RightPost" unique_id=986630542]
+mesh = SubResource("post_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightPost" unique_id=630593742]
+shape = SubResource("post_shape")
+
+[node name="Title" type="Label3D" parent="." unique_id=1593962193]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.35, 0.1)
+pixel_size = 0.002
+modulate = Color(0.96, 0.89, 0.72, 1)
+text = "ВАШИ ИДЕИ И ПРЕДЛОЖЕНИЯ"
+font_size = 40
+outline_size = 1
+
+[node name="FrameLeft" type="MeshInstance3D" parent="." unique_id=1339923290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.135, 1.7, 0.05)
+mesh = SubResource("frame_vertical")
+
+[node name="FrameRight" type="MeshInstance3D" parent="." unique_id=280463326]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.135, 1.7, 0.05)
+mesh = SubResource("frame_vertical")
+
+[node name="FrameTop" type="MeshInstance3D" parent="." unique_id=1234499922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.56, 0.05)
+mesh = SubResource("frame_horizontal")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="." unique_id=998057451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.84, 0.05)
+mesh = SubResource("frame_horizontal")
+
+[node name="AdhesiveZone" type="Area3D" parent="." unique_id=800000401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.15)
+collision_layer = 0
+collision_mask = 4
+monitoring = true
+
+[node name="ZoneShape" type="CollisionShape3D" parent="AdhesiveZone" unique_id=800000402]
+shape = SubResource("shape_zone")

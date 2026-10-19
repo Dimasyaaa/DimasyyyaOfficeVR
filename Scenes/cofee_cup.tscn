@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bu71oojqfv6fv"]
+
+[ext_resource type="Script" uid="uid://w71e4v1cfvbi" path="res://Scripts/cofee_cup.gd" id="1_4gcmx"]
+[ext_resource type="Material" uid="uid://npvv328yr27t" path="res://Material/CapMaterial.tres" id="1_c6lw0"]
+[ext_resource type="Material" uid="uid://bod6i6rymi5a4" path="res://Material/CofeeCapMaterial.tres" id="2_c6lw0"]
+[ext_resource type="Material" uid="uid://omr8djlaxw7r" path="res://Material/CofeeMaterial.tres" id="3_4gcmx"]
+[ext_resource type="Material" uid="uid://215kkxwigfmx" path="res://Material/WaterMaterial.tres" id="3_jsmuw"]
+[ext_resource type="AudioStream" uid="uid://dv611qbh73844" path="res://Sound/cofee_drink.wav" id="6_tw7ne"]
+
+[sub_resource type="CylinderMesh" id="glass_mesh"]
+material = ExtResource("1_c6lw0")
+top_radius = 0.053
+bottom_radius = 0.043
+height = 0.14
+radial_segments = 20
+cap_top = false
+
+[sub_resource type="TorusMesh" id="rim_mesh"]
+material = ExtResource("1_c6lw0")
+inner_radius = 0.049
+outer_radius = 0.056
+rings = 20
+ring_segments = 8
+
+[sub_resource type="TorusMesh" id="TorusMesh_bhunq"]
+material = ExtResource("2_c6lw0")
+
+[sub_resource type="CylinderMesh" id="water_mesh"]
+material = ExtResource("3_jsmuw")
+top_radius = 0.044
+bottom_radius = 0.039
+height = 0.11
+radial_segments = 20
+
+[sub_resource type="CylinderShape3D" id="cup_shape"]
+height = 0.14
+radius = 0.053
+
+[node name="CofeeCup" type="RigidBody3D" unique_id=8169753 groups=["cofee_cup"]]
+top_level = true
+collision_layer = 4
+collision_mask = 3
+freeze_mode = 1
+script = ExtResource("1_4gcmx")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=663545807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = ExtResource("2_c6lw0")
+mesh = SubResource("glass_mesh")
+
+[node name="Rim" type="MeshInstance3D" parent="." unique_id=1092840300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 4.3526292e-05)
+material_override = ExtResource("2_c6lw0")
+mesh = SubResource("rim_mesh")
+
+[node name="Handle" type="MeshInstance3D" parent="." unique_id=1174379563]
+transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, -0.05, 0, 0.05, -2.1855695e-09, 0.085259035, 0.082189485, 0)
+mesh = SubResource("TorusMesh_bhunq")
+
+[node name="Cofee" type="MeshInstance3D" parent="." unique_id=1658369310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.051355295, 0)
+visible = false
+material_override = ExtResource("3_4gcmx")
+mesh = SubResource("water_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1955652616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+shape = SubResource("cup_shape")
+
+[node name="Amount" type="Label3D" parent="." unique_id=1014636273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19132282, 0)
+pixel_size = 0.001
+billboard = 1
+text = "0 мл"
+font_size = 28
+
+[node name="Message" type="Label3D" parent="." unique_id=124489436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01210618, 0.30437398, 0)
+billboard = 1
+text = "Кофе выпито!"
+font_size = 18
+
+[node name="SipSound" type="AudioStreamPlayer3D" parent="." unique_id=586210191]
+stream = ExtResource("6_tw7ne")

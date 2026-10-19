@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dg51b54fslb5e"]
+
+[ext_resource type="PackedScene" uid="uid://shi81absfi60" path="res://Models/people/rp_sophia_animated_003_idling.fbx" id="1_ymo0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhunq"]
+size = Vector3(0.5031738, 1.4899902, 0.3970337)
+
+[node name="PeopleGirl" type="StaticBody3D" unique_id=446690008]
+
+[node name="People" parent="." unique_id=1631098742 instance=ExtResource("1_ymo0r")]
+transform = Transform3D(-0.99974567, 0, -0.022553287, 0, 1, 0, 0.022553287, 0, -0.99974567, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=447097037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.095825195, 0.77697754, 0.0027770996)
+shape = SubResource("BoxShape3D_bhunq")

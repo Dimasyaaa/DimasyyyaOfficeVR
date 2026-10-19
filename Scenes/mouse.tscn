@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://dcrxb2plrco6h"]
+
+[ext_resource type="Material" uid="uid://c65fdmqqg8sev" path="res://Material/MouseMaterial.tres" id="1_dev0r"]
+[ext_resource type="Script" uid="uid://bfrlpbsqg5lqr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="2_pick"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxmaw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i4ct2"]
+material = SubResource("StandardMaterial3D_cxmaw")
+size = Vector3(0.1, 0.04, 0.19)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hxi2q"]
+material = ExtResource("1_dev0r")
+size = Vector3(0.02, 0.02, 0.06)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mouse"]
+size = Vector3(0.1, 0.06, 0.2)
+
+[node name="Mouse" type="RigidBody3D" unique_id=2055030117]
+collision_layer = 4
+collision_mask = 196615
+freeze_mode = 1
+script = ExtResource("2_pick")
+
+[node name="Corpus" type="MeshInstance3D" parent="." unique_id=1311944235]
+mesh = SubResource("BoxMesh_i4ct2")
+
+[node name="PKM" type="MeshInstance3D" parent="." unique_id=577266866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019343734, 0.022204936, -0.04633695)
+mesh = SubResource("BoxMesh_hxi2q")
+
+[node name="LKM" type="MeshInstance3D" parent="." unique_id=203518730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020552814, 0.022204936, -0.04633695)
+mesh = SubResource("BoxMesh_hxi2q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=900000002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
+shape = SubResource("BoxShape3D_mouse")

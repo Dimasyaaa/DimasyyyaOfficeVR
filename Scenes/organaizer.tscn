@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c7dajr370d8ix"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vj6y8"]
+albedo_color = Color(0.4045111, 0.40451118, 0.40451103, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rn7yd"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Organizer" type="Node3D" unique_id=1967662132]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1410154925]
+transform = Transform3D(0.011353067, 0, 0, 0, 0.114276946, 0, 0, 0, 0.8043512, 0, 0.029657323, 0)
+use_collision = true
+size = Vector3(1, 1.519043, 1)
+material = SubResource("StandardMaterial3D_vj6y8")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=261081518]
+transform = Transform3D(-4.962583e-10, 0, 1, 0, 0.114276946, 0, -0.011353067, 0, -4.371139e-08, 0.5038432, 0.030079305, 0.39664465)
+use_collision = true
+size = Vector3(1, 1.5264282, 1)
+material = SubResource("StandardMaterial3D_vj6y8")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D2" unique_id=150318733]
+transform = Transform3D(1.5590209, -1.527174e-07, 1.0406234e-07, 3.2776033e-09, 0.6273378, -0.91600645, 9.670953e-11, 0.039664976, 0.18919517, -0.031295776, 0.6312891, 0.4471568)
+operation = 2
+size = Vector3(1, 1.0509033, 1)
+material = SubResource("StandardMaterial3D_vj6y8")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1655322965]
+transform = Transform3D(-4.962583e-10, 0, 1, 0, 0.114276946, 0, -0.011353067, 0, -4.371139e-08, 0.504, 0.030189158, -0.39653644)
+use_collision = true
+size = Vector3(1, 1.5283508, 1)
+material = SubResource("StandardMaterial3D_vj6y8")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D3" unique_id=1557005265]
+transform = Transform3D(1.5590209, -1.527174e-07, 1.0406234e-07, 3.2776033e-09, 0.6273378, -0.91600645, 9.670953e-11, 0.039664976, 0.18919517, 3.8146973e-06, 0.63225716, 0.44685054)
+operation = 2
+size = Vector3(1, 1.0509033, 1)
+material = SubResource("StandardMaterial3D_vj6y8")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1460580173]
+transform = Transform3D(2.1692143e-17, 3.4795015e-08, 0.9999998, 0.011353068, -3.4795015e-08, 0, 4.9625837e-10, 0.79601717, -4.371138e-08, 0.504, -0.05044547, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_rn7yd")

@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cstaple00001"]
+
+[ext_resource type="Script" uid="uid://44y2t4hb32vi" path="res://Scripts/staple.gd" id="1_staple"]
+
+[sub_resource type="StandardMaterial3D" id="mat_body"]
+albedo_color = Color(0.16, 0.17, 0.2, 1)
+metallic = 0.35
+roughness = 0.5
+
+[sub_resource type="BoxMesh" id="mesh_base"]
+material = SubResource("mat_body")
+size = Vector3(0.15, 0.022, 0.045)
+
+[sub_resource type="StandardMaterial3D" id="mat_top"]
+albedo_color = Color(0.75, 0.15, 0.16, 1)
+metallic = 0.2
+roughness = 0.45
+
+[sub_resource type="BoxMesh" id="mesh_top"]
+material = SubResource("mat_top")
+size = Vector3(0.145, 0.016, 0.044587158)
+
+[sub_resource type="StandardMaterial3D" id="mat_steel"]
+albedo_color = Color(0.6, 0.62, 0.65, 1)
+metallic = 0.85
+roughness = 0.3
+
+[sub_resource type="CylinderMesh" id="mesh_hinge"]
+material = SubResource("mat_steel")
+top_radius = 0.008
+bottom_radius = 0.008
+height = 0.04746399
+radial_segments = 12
+
+[sub_resource type="BoxShape3D" id="shape_body"]
+size = Vector3(0.15, 0.05, 0.045)
+
+[sub_resource type="BoxShape3D" id="shape_zone"]
+size = Vector3(0.16, 0.05, 0.06)
+
+[node name="Stapler" type="RigidBody3D" unique_id=800000001]
+collision_layer = 4
+collision_mask = 196615
+mass = 0.5
+freeze_mode = 1
+script = ExtResource("1_staple")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=800000002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011, 0)
+mesh = SubResource("mesh_base")
+
+[node name="Top" type="MeshInstance3D" parent="." unique_id=800000003]
+transform = Transform3D(0.98293537, -0.18395135, 0, 0.18395135, 0.98293537, 0, 0, 0, 1, -0.0067580417, 0.03938113, -0.000706421)
+mesh = SubResource("mesh_top")
+
+[node name="Hinge" type="MeshInstance3D" parent="." unique_id=800000004]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.06370944, 0.019596826, -0.000376584)
+mesh = SubResource("mesh_hinge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=800000005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022, -0.00072897226)
+shape = SubResource("shape_body")
+
+[node name="StapleZone" type="Area3D" parent="." unique_id=800000006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.022, 0.03)
+collision_layer = 0
+collision_mask = 4
+
+[node name="ZoneShape" type="CollisionShape3D" parent="StapleZone" unique_id=800000007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.03050059)
+shape = SubResource("shape_zone")

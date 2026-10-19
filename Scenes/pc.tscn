@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://n66us4ax8o8g"]
+
+[ext_resource type="Script" uid="uid://msgakv51ro0s" path="res://Scripts/pc_screen_stub.gd" id="1_80rcu"]
+
+[sub_resource type="StandardMaterial3D" id="mat_body"]
+albedo_color = Color(0.13, 0.14, 0.17, 1)
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="mesh_base"]
+material = SubResource("mat_body")
+size = Vector3(0.28, 0.02, 0.18)
+
+[sub_resource type="BoxMesh" id="mesh_neck"]
+material = SubResource("mat_body")
+size = Vector3(0.06, 0.1, 0.05)
+
+[sub_resource type="BoxMesh" id="mesh_frame"]
+material = SubResource("mat_body")
+size = Vector3(0.64, 0.38, 0.035)
+
+[sub_resource type="QuadMesh" id="QuadMesh_v6br0"]
+size = Vector2(0.6, 0.35)
+
+[node name="PC" type="Node3D" unique_id=800002001]
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=800002002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+mesh = SubResource("mesh_base")
+
+[node name="Neck" type="MeshInstance3D" parent="." unique_id=800002003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+mesh = SubResource("mesh_neck")
+
+[node name="Frame" type="MeshInstance3D" parent="." unique_id=800002004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31, -0.005)
+mesh = SubResource("mesh_frame")
+
+[node name="Screen" type="MeshInstance3D" parent="." unique_id=934002636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30788907, 0.018031448)
+mesh = SubResource("QuadMesh_v6br0")
+script = ExtResource("1_80rcu")

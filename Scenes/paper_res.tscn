@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dlx3k58hh3gtj"]
+
+[ext_resource type="Script" uid="uid://bfrlpbsqg5lqr" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_pl2av"]
+[ext_resource type="Texture2D" uid="uid://b4n07l43t6sk1" path="res://Textures/BeautifulME1.png" id="2_8jxr2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7fu2"]
+albedo_texture = ExtResource("2_8jxr2")
+uv1_scale = Vector3(3.424, 1.422, 1.667)
+uv1_offset = Vector3(-0.215, -0.43, -0.03)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8jxr2"]
+material = SubResource("StandardMaterial3D_f7fu2")
+size = Vector3(0.21, 0.008640625, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f7fu2"]
+size = Vector3(0.21, 0.009617187, 0.3)
+
+[node name="PaperRes" type="RigidBody3D" groups=["paper_res"] unique_id=1279749461]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_pl2av")
+metadata/_custom_type_script = "uid://bfrlpbsqg5lqr"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1023177552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14672852, -0.010179687, 0)
+mesh = SubResource("BoxMesh_8jxr2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1110837572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14672852, -0.009691406, 0)
+shape = SubResource("BoxShape3D_f7fu2")

@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://chkje8cokm4cm"]
+
+[ext_resource type="Script" uid="uid://dxhflolxmqpd0" path="res://Scripts/water_cooler.gd" id="1_cooler"]
+[ext_resource type="PackedScene" uid="uid://cwyevgr86d8bj" path="res://Scenes/button.tscn" id="2_button"]
+[ext_resource type="PackedScene" uid="uid://b11xt6pikf6qr" path="res://Scenes/water_cup.tscn" id="3_cup"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="4_slot"]
+[ext_resource type="AudioStream" uid="uid://cl0u2tsyckwfq" path="res://Sound/water_pour.wav" id="5_water"]
+[ext_resource type="Script" uid="uid://d302qipyr2t" path="res://Scripts/ranged_snap_zone.gd" id="6_slot_script"]
+
+[sub_resource type="StandardMaterial3D" id="white"]
+albedo_color = Color(0.78, 0.82, 0.84, 1)
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="body_mesh"]
+material = SubResource("white")
+size = Vector3(0.6, 1.25, 0.45)
+
+[sub_resource type="BoxShape3D" id="body_shape"]
+size = Vector3(0.6, 1.25, 0.45)
+
+[sub_resource type="StandardMaterial3D" id="blue"]
+albedo_color = Color(0.035, 0.3, 0.58, 1)
+metallic = 0.15
+roughness = 0.22
+
+[sub_resource type="BoxMesh" id="tray_mesh"]
+material = SubResource("blue")
+size = Vector3(0.46, 0.07, 0.35)
+
+[sub_resource type="BoxShape3D" id="tray_shape"]
+size = Vector3(0.46, 0.07, 0.35)
+
+[sub_resource type="CylinderMesh" id="bottle_mesh"]
+material = SubResource("blue")
+top_radius = 0.17
+bottom_radius = 0.17
+height = 0.5
+radial_segments = 24
+
+[sub_resource type="CylinderMesh" id="neck_mesh"]
+material = SubResource("blue")
+top_radius = 0.07
+bottom_radius = 0.17
+height = 0.15
+radial_segments = 24
+
+[sub_resource type="StandardMaterial3D" id="steel"]
+albedo_color = Color(0.3, 0.35, 0.4, 1)
+metallic = 0.8
+
+[sub_resource type="CylinderMesh" id="tap_mesh"]
+material = SubResource("steel")
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.16
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="flow"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.1, 0.65, 0.9, 0.7)
+
+[sub_resource type="CylinderMesh" id="stream_mesh"]
+material = SubResource("flow")
+top_radius = 0.007
+bottom_radius = 0.009
+height = 1.0
+radial_segments = 8
+
+[sub_resource type="TorusMesh" id="bottle_rib"]
+material = SubResource("blue")
+inner_radius = 0.156
+outer_radius = 0.18
+rings = 24
+ring_segments = 8
+
+[sub_resource type="BoxMesh" id="vent_mesh"]
+material = SubResource("steel")
+size = Vector3(0.31, 0.012, 0.012)
+
+[node name="WaterCooler" type="Node3D" unique_id=550088080]
+script = ExtResource("1_cooler")
+
+[node name="Body" type="StaticBody3D" parent="." unique_id=1737823078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
+collision_mask = 7
+
+[node name="Mesh" type="MeshInstance3D" parent="Body" unique_id=1393848262]
+mesh = SubResource("body_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body" unique_id=1046196480]
+shape = SubResource("body_shape")
+
+[node name="Tray" type="StaticBody3D" parent="." unique_id=1420779611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.805, 0.34)
+collision_mask = 7
+
+[node name="Mesh" type="MeshInstance3D" parent="Tray" unique_id=163312722]
+mesh = SubResource("tray_mesh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tray" unique_id=698309736]
+shape = SubResource("tray_shape")
+
+[node name="Bottle" type="MeshInstance3D" parent="." unique_id=1272431824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+mesh = SubResource("bottle_mesh")
+
+[node name="BottleNeck" type="MeshInstance3D" parent="." unique_id=1363160991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.325, 0)
+mesh = SubResource("neck_mesh")
+
+[node name="Tap" type="MeshInstance3D" parent="." unique_id=1757555292]
+transform = Transform3D(1, 0, 0, 0, 3.1391647e-07, -1, 0, 1, 3.1391647e-07, 0, 1.12, 0.3)
+mesh = SubResource("tap_mesh")
+
+[node name="Nozzle" type="Marker3D" parent="." unique_id=1111725780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12, 0.38)
+
+[node name="WaterStream" type="MeshInstance3D" parent="." unique_id=1809618039]
+visible = false
+mesh = SubResource("stream_mesh")
+
+[node name="WaterCup" parent="." unique_id=276971504 instance=ExtResource("3_cup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.004503548, 0.89235634, 0.45783436)
+
+[node name="CupHolder" parent="." unique_id=120435323 instance=ExtResource("4_slot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842, 0.38)
+script = ExtResource("6_slot_script")
+grab_distance = 0.17
+snap_require = "water_cup"
+initial_object = NodePath("../WaterCup")
+
+[node name="WaterButton" parent="." unique_id=791359674 instance=ExtResource("2_button")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31, 0.26)
+caption = "ВОДА"
+
+[node name="Status" type="Label3D" parent="." unique_id=2074466153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1459825, 0.25)
+pixel_size = 0.0016
+text = "Удерживайте «Вода»"
+font_size = 28
+
+[node name="Instructions" type="Label3D" parent="." unique_id=2144475391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0.23)
+pixel_size = 0.0012
+text = "ПИТЬЕВАЯ ВОДА"
+font_size = 24
+outline_size = 1
+
+[node name="BottleRibTop" type="MeshInstance3D" parent="." unique_id=1552804231]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79, 0)
+mesh = SubResource("bottle_rib")
+
+[node name="BottleRibBottom" type="MeshInstance3D" parent="." unique_id=1972834695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52, 0)
+mesh = SubResource("bottle_rib")
+
+[node name="VentTop" type="MeshInstance3D" parent="." unique_id=1849780207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 0.229)
+mesh = SubResource("vent_mesh")
+
+[node name="VentMiddle" type="MeshInstance3D" parent="." unique_id=738626074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0.229)
+mesh = SubResource("vent_mesh")
+
+[node name="VentBottom" type="MeshInstance3D" parent="." unique_id=1468204144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.229)
+mesh = SubResource("vent_mesh")
+
+[node name="WaterSound" type="AudioStreamPlayer3D" parent="." unique_id=1529973145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02, 0.38)
+stream = ExtResource("5_water")
+volume_db = -18.0
+unit_size = 1.5
+max_distance = 5.0

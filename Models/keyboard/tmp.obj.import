@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfjqecsc54vdi"
+path="res://.godot/imported/tmp.obj-91e324edd957372a3888f5430c95c60a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tmp.obj-91e324edd957372a3888f5430c95c60a.mesh"]
+
+source_file="res://Models/keyboard/tmp.obj"
+dest_files=["res://.godot/imported/tmp.obj-91e324edd957372a3888f5430c95c60a.mesh", "res://.godot/imported/tmp.obj-91e324edd957372a3888f5430c95c60a.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
